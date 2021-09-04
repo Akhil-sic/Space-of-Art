@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Fill-in
+{% endblock title %}
+{% block content %}
+            {% if follow == 'follows' %}
+                <div class="row">
+                    <div class="section-header col-md-12">
+                        <h2>Following</h2>
+                        <span></span>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->
+                {% for follow in follows %}
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <div class="box-content">
+                            <div class="comment">
+                                <div class="comment-inner">
+                                    <div class="author-avatar">
+                                        <img src="{{ follow.follow_user.profile.image.url }}" alt="">
+                                    </div>
+                                    <div class="comment-body">
+                                       <a href="{% url 'user_posts' follow.follow_user.username %}"><h4>{{ follow.follow_user.username }}</h4></a>
+                                        
+                                    </div>
+                                </div>
+                            </div>  <!-- /.comment -->
+                        </div> <!-- /.box-content -->
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+                {% endfor %}
+            {% endif %}
+
+
+            {% if follow == 'followers' %}
+                <div class="row">
+                    <div class="section-header col-md-12">
+                        <h2>Followers</h2>
+                        <span></span>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->
+                {% for follow in follows %}
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <div class="box-content">
+                            <div class="comment">
+                                <div class="comment-inner">
+                                    <div class="author-avatar">
+                                        <img src="{{ follow.user.profile.image.url }}" alt="">
+                                    </div>
+                                    <div class="comment-body">
+                                       <a href="{% url 'user_posts' follow.user.username %}"><h4>{{ follow.user.username }}</h4></a>
+                                        
+                                    </div>
+                                </div>
+                            </div>  <!-- /.comment -->
+                        </div> <!-- /.box-content -->
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+                {% endfor %}
+            {% endif %}
+
+{% endblock content %}

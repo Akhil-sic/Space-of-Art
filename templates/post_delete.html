@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Delete Post
+{% endblock title %}
+
+{% block content %}
+                <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="section-header col-md-12">
+                        <h2>Do you really want to delete</h2>
+                        <span></span>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->
+
+                <div class="row">
+                    <div class="blog-image col-md-12">
+                        <img src="{{post.image.url}}" alt="Blog 1">
+                    </div> <!-- /.blog-image -->
+                    <div class="blog-info col-md-12">
+                        <div class="box-content">
+                            <h2 class="blog-title">{{post.author}}</h2>
+                            <span class="blog-meta">{{post.date_posted | date:" M d, Y"}}</span>
+                            <p>{{post.content}}</p>
+                            
+
+                            
+                        </div>
+                    </div> <!-- /.blog-info -->
+                </div>
+                 <input type="submit" class="mainBtn" value="Delete" id="submit-comment"/>
+                </form>
+                <form action="{% url 'home' %}">
+                <input type="submit" class="mainBtn" value="return" id="return"/>
+                </form>
+{% endblock content %}

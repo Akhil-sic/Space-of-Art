@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Search
+{% endblock title %}
+{% block content %}
+    <!-- Main Section -->
+    <div class="container">
+      <h3 class="heading font-weight-light">Search results for {{searchterm}} </h3>
+      <hr />
+    </div>
+
+    
+    
+      <!-- Card for details -->
+      {% if portfolio %}
+      {% for per in portfolio  %}
+<div class="container main-part">
+      {% include 'partials/_card.html' %}
+      </div>
+      {% endfor %}
+     {% else %}
+     <p class="d-block font-weight-light my-2 heading">no artists</p>
+       
+     {% endif %}
+     <!-- Main Section ends-->
+
+    <!-- Main Section ends-->
+
+{% endblock content %}
+
+
+

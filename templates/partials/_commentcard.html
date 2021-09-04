@@ -1,0 +1,20 @@
+{% load static %}
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <div class="box-content">
+                            <div class="comment">
+                                <div class="comment-inner">
+                                    <div class="author-avatar">
+                                        <img src="{{ comment.author.profile.image.url }}" alt="">
+                                    </div>
+                                    <div class="comment-body">
+                                        <h4>{{comment.author}}</h4>
+                                        <span>{{comment.date_posted | date:" M d, Y"}}</span>
+                                        <p>{{comment.content}}</p>
+                                    </div>
+                                </div>
+                            </div>  <!-- /.comment -->
+                        </div> <!-- /.box-content -->
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->

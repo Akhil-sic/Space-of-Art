@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Log out
+{% endblock title %}
+{% block content %}
+                    <div class="section-header col-md-12">
+                      <h2>Login</h2>
+                        <span></span>
+                          <br/><br/><br/>
+                          <div class="form-group">
+          
+                            <div class="pt-3">
+                                <small class="text-muted">
+                                     You have been Logged out <br>
+                                        You can login again  <a class="ml-2" href="{% url login %}">Sign up</a>
+                                </small>
+                            </div>
+                    </div>
+    
+{% endblock content%}

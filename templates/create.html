@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Fill-in
+{% endblock title %}
+{% block content %}
+                    <div class="section-header col-md-12">
+                      <h2>Change Profile data</h2>
+                        <span></span>
+                          <br/><br/><br/>
+                          
+                              <form method="POST" class="col-12 col-md-6 pl-3 pr-3 pl-md-0 pr-md-0" enctype="multipart/form-data">
+                                  {% csrf_token %}
+                                  <fieldset class="form-group">
+                                      {{ uform | crispy }}
+                                      {{ pform | crispy }}                                  
+                                  </fieldset>
+                                  <div class="form-group">
+                                      <button class="btn btn-info w-100 text-black text-center my-2" type="submit" name="Siginup">Change data</button>
+                                  </div>
+                              </form>
+                            <div class="form-group">
+          
+                            <!--<div class="pt-3">
+                                <small class="text-muted">
+                                    Do you need an account? <a class="ml-2" href="{% url 'signup' %}">Sign up</a>
+                                  
+                                </small>
+                              
+                            </div>-->
+                            </div>
+                          </div>
+                     </div>
+
+{% endblock content%}

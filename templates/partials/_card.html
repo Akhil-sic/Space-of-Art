@@ -1,0 +1,35 @@
+{% load static %}
+                              
+                            <div class="col-md-4 project-item mix design">
+                                <div class="project-thumb">
+                                    <img src="{{ p.image.url }}" alt="">
+                                    <div class="overlay-b">
+                                        <div class="overlay-inner">
+                                            <a href="{{ p.image.url }}" class="fancybox fa fa-expand" title="{{p.content}}"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-content project-detail" style="background-color:#fffafa;">
+                                <div
+                                style="padding-left: 0px;"
+                                class="col-8 no-padding d-flex align-items-center">
+
+                                    <img
+                                    class="mr-2"
+                                    
+                                    style="border-radius: 50%; width: 30px; height: 30px;"
+                                    src="{{ p.author.profile.image.url }}" alt="">
+        
+                                   <h2> <a href="{% url 'user_posts' p.author %}">{{p.author}}</a></h2>
+                                    {% if request.user.is_authenticated and p.author == user %}
+                                   <!--<a style="
+                                    margin-left: 190px; margin-right: auto; padding-right: auto"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>--> 
+                                    <a href="{% url 'post-delete' p.id %} " style="display: inline-block;
+                                    margin-left: 200px; margin-right: auto; padding-right: auto"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                    {% endif %}
+                                </div> <br/>
+                                    <a href="{% url 'post_detail' p.id %}"><span style="font-size: .84em; color: #aaaaaa; text-align: left;">{{p.date_posted | date:" M d, Y"}}</span></a><br><br>
+                                    <p>{{p.content}} </p>
+                                   
+                                </div>
+                            </div> <!-- /.project-item -->

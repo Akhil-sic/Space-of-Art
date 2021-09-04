@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Signup
+{% endblock title %}
+{% block content %}
+<!--<div class="container">
+      <h2 class="heading font-weight-light text-center">Siginup</h2>
+      <hr/>
+    </div>
+    <div class="container main-part">
+    <div class="container w-25 card p-4 m-4">
+    <form action="" method="POST" enctype="multipart/form-data" >
+    {%csrf_token%}
+  
+    {{form|crispy}}
+    <input type="submit" name="Signup" class="w-100 text-black text-center my-2 btn btn-info">
+  </form>
+    </div>
+    </div>-->
+
+
+                    <div class="section-header col-md-12">
+                      <h2>Signup</h2>
+                        <span>Subtitle Goes Here</span>
+                          <br/><br/><br/>
+                          
+                              <form method="POST" class="col-12 col-md-6 pl-3 pr-3 pl-md-0 pr-md-0">
+                                  {% csrf_token %}
+                                  <fieldset class="form-group">
+
+                                      {{ form | crispy }}
+                                  </fieldset>
+                                  <div class="form-group">
+                                      <button class="btn btn-info w-100 text-black text-center my-2" type="submit" name="Siginup">Siginup</button>
+                                  </div>
+                              </form>
+                            <div class="form-group">
+          
+                            <!--<div class="pt-3">
+                                <small class="text-muted">
+                                    Do you need an account? <a class="ml-2" href="{% url 'signup' %}">Sign up</a>
+                                  
+                                </small>
+                              
+                            </div>-->
+                            </div>
+                          </div>
+                     </div>
+
+
+{% endblock content%}

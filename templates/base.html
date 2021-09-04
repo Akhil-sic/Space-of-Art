@@ -1,0 +1,187 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html class="no js"lang="en"> <!--<![endif]-->
+    <head>
+   
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,300italic,300,500,500italic,700,900">
+        <!--
+        Artcore Template
+		http://www.templatemo.com/preview/templatemo_423_artcore
+        -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static './css/font-awesome.css' %}">
+        <link rel="stylesheet" href="{% static './css/animate.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static './css/CSS.css' %}">
+        <link rel="stylesheet" href="{% static './css/templatemo-misc.css' %}">
+        <link rel="stylesheet" href="{% static './css/templatemo-style.css' %}">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="{% static './js/vendor/modernizr-2.6.1-respond-1.1.0.min.js' %}"></script>
+     <title> 
+     {% block title %}
+
+    {% endblock title %}
+    </title>   
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+
+        <section id="pageloader">
+            <div class="loader-item fa fa-spin colored-border"></div>
+        </section> <!-- /#pageloader -->
+
+        <header class="site-header container-fluid">
+            <div class="top-header" style="background-color: black !important;">
+                <div class="logo col-md-6 col-sm-6">
+                    <h1><a href="{% url 'home' %}" style="color=: #808080 !important">Space of <em> Art</em></a></h1>
+                </div> <!-- /.logo -->
+                <div class="social-top col-md-6 col-sm-6">
+                    {% if request.user.is_authenticated %}
+                    
+                    
+                    <ul>
+                       <!-- <li><a href="#" class="fa fa-facebook"></a></li>
+                        <li><a href="#" class="fa fa-twitter"></a></li>-->
+                        <span style="font-size:18px; color:white !important; margin-right:20px;">
+                            <img                            
+                            style="border-radius: 50%; width: 50px; height: 50px; display: inline-block;vertical-align: middle;
+                                                                                margin-left: auto;
+                                                                                margin-right: 10px;"
+                            src="{{ user.profile.image.url }}" alt="static\images\default.png"><a style="font-size:18px; color:white !important;" href="{% url 'user_posts' request.user.username %}">Hello, {{request.user}}</a> </span>
+                        
+                        <li><a href="{% url 'create' %}" class="fa fa-pencil fa-fw" style="color: white; background-color: #4f4f4f; aria-hidden='true'"></a>
+                        <li><a href="{% url 'logout' %}" class="fa fa-sign-in" style="color: white; background-color: #4f4f4f; aria-hidden='true'"> </a></li>
+                    </ul>   
+                        {% else %}
+                    <ul>
+                        <li><a href="{% url 'signup' %}" class="fa fa-user" style="color: white; background-color: #4f4f4f; aria-hidden='true'"></a></li>
+                        <li><a href="{% url 'login' %}" class="fa fa-sign-in" style="color: white; background-color: #4f4f4f; aria-hidden='true'"> </a></li>
+                    </ul>
+                        {% endif %}
+                    </ul>
+                </div> <!-- /.social-top -->
+            </div> <!-- /.top-header -->
+            <div class="main-header" style="background-color:#cfcfcf;">
+                <div class="row">
+                    <div class="main-header-left col-md-3 col-sm-6 col-xs-8">
+                        <a id="search-icon" class="btn-left fa fa-search" href="#search-overlay"> 
+                       
+                        <div id="search-overlay">
+                            <a href="#search-overlay" class="close-search"><i class="fa fa-times-circle"></i></a>
+                            <div class="search-form-holder">
+                                <h2>Search by name</h2>
+                                <form id="search-form" action="{% url 'search' %}" method ="GET">
+                                    <input type="search" name="searchterm" placeholder="" autocomplete="off" />
+                                </form>
+                            </div>
+                            
+                        </div><!-- #search-overlay -->
+                    </div> <!-- /.main-header-left -->
+                    {% if request.user.is_authenticated %}
+                    <div style="display: inline-block; vertical-align: middle; margin-left: auto; margin-right: 5px;">
+                        <a href="{% url 'post_create' %} " class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> Create post</a>
+                        
+                           <!-- <li class="active"><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="#">Projects</a>
+                                <ul>
+                                    <li><a href="projects-2.html">Two Columns</a></li>
+                                    <li><a href="projects-3.html">Three Columns</a></li>
+                                    <li><a href="project-details.html">Project Single</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Blog</a>
+                                <ul>
+                                    <li><a href="blog.html">Blog Masonry</a></li>
+                                    <li><a href="blog-single.html">Post Single</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Pages</a>
+                                <ul>
+                                    <li><a href="our-team.html">Our Team</a></li>
+                                    <li><a href="archives.html">Archives</a></li>
+                                    <li><a href="grids.html">Columns</a></li>
+                                    <li><a href="404.html">404 Page</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>-->
+                    </div> <!-- /.menu-wrapper -->
+                    {% endif %}
+
+            <div id="responsive-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#">Projects</a>
+                        <ul>
+                            <li><a href="projects-2.html">Two Columns</a></li>
+                            <li><a href="projects-3.html">Three Columns</a></li>
+                            <li><a href="project-details.html">Project Single</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Blog</a>
+                        <ul>
+                            <li><a href="blog.html">Blog Masonry</a></li>
+                            <li><a href="blog-single.html">Post Single</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Pages</a>
+                        <ul>
+                            <li><a href="our-team.html">Our Team</a></li>
+                            <li><a href="archives.html">Archives</a></li>
+                            <li><a href="grids.html">Columns</a></li>
+                            <li><a href="404.html">404 Page</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </header> <!-- /.site-header -->
+        <div class="content-wrapper" style="background-color: #f0eee4 !important;">
+            <div class="inner-container container">
+                
+                    {% block content %}
+
+                    {% endblock content %}  
+                
+            </div>
+</div>
+
+    <!-- footer -->
+   
+        <script src="{% static './js/vendor/jquery-1.11.0.min.js' %}"></script>
+        <script>window.jQuery || document.write(<script src="{% static './js/vendor/jquery-1.11.0.min.js' %}"> </script>) </script>
+        <script src="{% static './js/plugins.js' %}"></script>
+        <script src="{% static './js/main.js' %}"></script>
+
+        
+        <script type="text/javascript">
+            
+           
+          $(window).load(function() { // makes sure the whole site is loaded
+                $('.loader-item').fadeOut(); // will first fade out the loading animation
+                    $('#pageloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+                $('body').delay(350).css({'overflow-y':'visible'});
+            })
+            
+        </script>
+        <script>
+        if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+        }
+        </script>
+    </body>
+</html>

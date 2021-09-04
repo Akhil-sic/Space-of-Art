@@ -1,0 +1,56 @@
+   {% extends 'base.html' %}
+   {% load static %}
+
+   {% block title %}
+   {{post.author}}
+   {% endblock title %}
+   {% block content %}
+   <!-- Main Section -->
+    
+                <div class="row">
+                    <div class="section-header col-md-12">
+                        <h2>Post Detail</h2>
+                        <span></span>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->
+
+                <div class="row">
+                    <div class="blog-image col-md-12">
+                        <img src="{{post.image.url}}" alt="Blog 1">
+                    </div> <!-- /.blog-image -->
+                    <div class="blog-info col-md-12">
+                        <div class="box-content">
+                            <h2 class="blog-title">{{post.author}}</h2>
+                            <span class="blog-meta">{{post.date_posted | date:" M d, Y"}}</span>
+                            <p>{{post.content}}</p>
+                            
+
+                            
+                        </div>
+                    </div> <!-- /.blog-info -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12 comment-form">
+                        <h2 class="comment-heading">Leave a Comment</h2>
+                       
+                        <div class="box-content">
+                            <p>
+                             <form method="POST" action="">
+                                {%csrf_token%}
+                                <label for="comment">Your comment</label>
+                                {{form.content}} 
+                            
+                            </p>
+                             <input type="submit" class="mainBtn" value="Submit Comment" id="submit-comment"/>
+                             </form>
+                        </div> <!-- /.box-content -->
+                        
+                    </div> <!-- /.comment-form -->
+                </div> <!-- /.row -->
+                <h2 class="comment-heading">Comments {{ count_comment }} </h2>
+                {% for comment in comments %}
+                
+                {% include 'partials/_commentcard.html' %}
+                {% endfor %}
+   {% endblock content %}
+   
