@@ -1,3 +1,4 @@
 .vscode/
 db.sqlite3
 myproject/settings.py
+secret.txt
