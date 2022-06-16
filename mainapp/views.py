@@ -41,7 +41,6 @@ class Portfdetailview(LoginRequiredMixin,DetailView):
 def searchview(request):
     if request.GET:
         searchterm = request.GET["searchterm"]
-        
         search_results = User.objects.filter(
             
          Q(username__icontains= searchterm)
